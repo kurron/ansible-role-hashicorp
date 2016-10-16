@@ -1,0 +1,44 @@
+---
+# tasks file for virtualbox
+
+- name: Add VirtualBox Repository
+  become: yes
+  command: "/usr/bin/dnf config-manager --add-repo {{virtualbox_rpm_repository}} update"
+  when: ansible_distribution == 'Fedora'
+
+- name: Update DNF
+  become: yes
+  command: "/usr/bin/dnf update"
+  when: ansible_distribution == 'Fedora'
+
+- name: Install VirtualBox Dependencies
+  become: yes
+  package: name={{item}} state=installed
+  with_items:
+  - binutils
+  - gcc
+  - make
+  - patch
+  - libgomp
+  - glibc-headers
+  - glibc-devel
+  - kernel-headers
+  - kernel-devel
+  - dkms
+  when: ansible_distribution == 'Fedora'
+
+- name: Install VirtualBox
+  become: yes
+  package:
+      name: VirtualBox-{{virtualbox_version}}
+      state: installed
+      enablerepo: virtualbox
+
+- name: Rebuild Kernel Modules
+  become: yes
+  command: "/usr/lib/virtualbox/vboxdrv.sh setup"
+
+- name: Add User to VirtualBox group
+  become: yes
+  user: name={{ansible_env.SUDO_USER}} groups=vboxusers append=yes state=present
+
