@@ -1,44 +1,23 @@
 ---
-# tasks file for virtualbox
-
-- name: Add VirtualBox Repository
+- name: Download Atlas Upload
   become: yes
-  command: "/usr/bin/dnf config-manager --add-repo {{virtualbox_rpm_repository}} update"
-  when: ansible_distribution == 'Fedora'
+  get_url:
+      url: "https://releases.hashicorp.com/atlas-upload-cli/{{hashicorp_atlas_upload_version}}/atlas-upload-cli_{{hashicorp_atlas_upload_version}}_linux_amd64.zip"
+      dest: "{{ansible_user_dir}}/atlas-upload-cli-{{hashicorp_atlas_upload_version}}.zip"
+      mode: 0444
+  when: hashicorp_atlas_upload_install
 
-- name: Update DNF
+- name: Unzip Atlas Upload
   become: yes
-  command: "/usr/bin/dnf update"
-  when: ansible_distribution == 'Fedora'
+  unarchive:
+      src: "{{ansible_user_dir}}/atlas-upload-cli-{{hashicorp_atlas_upload_version}}.zip"
+      dest: /usr/local/bin 
+      copy: no 
+      owner: "{{ansible_user_uid}}"
+      group: "{{ansible_user_gid}}"
+      mode: 0555
+      creates: /usr/local/bin/atlas-upload
+  when: hashicorp_atlas_upload_install
 
-- name: Install VirtualBox Dependencies
-  become: yes
-  package: name={{item}} state=installed
-  with_items:
-  - binutils
-  - gcc
-  - make
-  - patch
-  - libgomp
-  - glibc-headers
-  - glibc-devel
-  - kernel-headers
-  - kernel-devel
-  - dkms
-  when: ansible_distribution == 'Fedora'
-
-- name: Install VirtualBox
-  become: yes
-  package:
-      name: VirtualBox-{{virtualbox_version}}
-      state: installed
-      enablerepo: virtualbox
-
-- name: Rebuild Kernel Modules
-  become: yes
-  command: "/usr/lib/virtualbox/vboxdrv.sh setup"
-
-- name: Add User to VirtualBox group
-  become: yes
-  user: name={{ansible_env.SUDO_USER}} groups=vboxusers append=yes state=present
-
+- name: Test Atlas Upload
+  command: /usr/local/bin/atlas-upload --version

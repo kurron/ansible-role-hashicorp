@@ -1,29 +1,17 @@
 Role Name
 =========
 
-Installation of [VirtualBox](https://www.virtualbox.org/) hypervisor.
+Installation of [HashiCorp](https://www.hashicorp.com/) suite of tools.
 
 Requirements
 ------------
 
-On Fedora, this is a quick script to ensure you have everything installed on your system:
-
-```
-#!/bin/bash
-
-sudo dnf -y update
-sudo dnf -y install python-pip python-devel libffi-devel openssl-devel gcc redhat-rpm-config sshpass python2 python2-dnf libselinux-python
-sudo pip install --upgrade pip
-sudo pip install --upgrade paramiko
-sudo pip install --upgrade ansible
-sudo pip install --upgrade boto
-```
+TODO
 
 Role Variables
 --------------
 
-* virtualbox_version - the version of VirtualBox to install.  Default is 5.1.
-* virtualbox_rpm_repository - location of the RPM repository to use. Default is http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo.
+TODO
 
 Dependencies
 ------------
@@ -36,7 +24,7 @@ Example Playbook
 ```
 - hosts: servers
   roles:
-      - { role: kurron.virtualbox, virtualbox_version: 5.1 }
+      - { role: kurron.hashicorp, foo: bar }
 ```
 
 License

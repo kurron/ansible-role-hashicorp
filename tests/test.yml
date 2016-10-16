@@ -1,4 +1,4 @@
 ---
 - hosts: localhost
   roles:
-  - role: ../../ansible-role-virtualbox
+  - role: ../../ansible-role-hashicorp
