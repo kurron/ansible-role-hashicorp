@@ -6,7 +6,7 @@ hashicorp_consul_install: true
 hashicorp_consul_version: 0.7.0
 
 hashicorp_consul_replicate_install: true
-hashicorp_consul_replicate_version: 1.0.0
+hashicorp_consul_replicate_version: 0.2.0
 
 hashicorp_consul_template_install: true
 hashicorp_consul_template_version: 1.0.0

@@ -30,7 +30,7 @@
       mode: 0444
   when: hashicorp_consul_install
 
-- name: Unzip Consul Upload
+- name: Unzip Consul
   become: yes
   unarchive:
       src: "{{ansible_user_dir}}/consul-{{hashicorp_consul_version}}.zip"
@@ -44,3 +44,26 @@
 
 - name: Test Consul
   command: /usr/local/bin/consul --version
+
+- name: Download Consul Replicate
+  become: yes
+  get_url:
+      url: "https://releases.hashicorp.com/consul-replicate/{{hashicorp_consul_replicate_version}}/consul-replicate_{{hashicorp_consul_replicate_version}}_linux_amd64.zip"
+      dest: "{{ansible_user_dir}}/consul-replicate-{{hashicorp_consul_replicate_version}}.zip"
+      mode: 0444
+  when: hashicorp_consul_replicate_install
+
+- name: Unzip Consul Replicate
+  become: yes
+  unarchive:
+      src: "{{ansible_user_dir}}/consul-replicate-{{hashicorp_consul_replicate_version}}.zip"
+      dest: /usr/local/bin
+      copy: no
+      owner: "{{ansible_user_uid}}"
+      group: "{{ansible_user_gid}}"
+      mode: 0555
+      creates: /usr/local/bin/consul-replicate
+  when: hashicorp_consul_replicate_install
+
+- name: Test Consul Replicate
+  command: /usr/local/bin/consul-replicate --version
