@@ -11,8 +11,8 @@
   become: yes
   unarchive:
       src: "{{ansible_user_dir}}/atlas-upload-cli-{{hashicorp_atlas_upload_version}}.zip"
-      dest: /usr/local/bin 
-      copy: no 
+      dest: /usr/local/bin
+      copy: no
       owner: "{{ansible_user_uid}}"
       group: "{{ansible_user_gid}}"
       mode: 0555
@@ -21,3 +21,26 @@
 
 - name: Test Atlas Upload
   command: /usr/local/bin/atlas-upload --version
+
+- name: Download Consul
+  become: yes
+  get_url:
+      url: "https://releases.hashicorp.com/consul/{{hashicorp_consul_version}}/consul_{{hashicorp_consul_version}}_linux_amd64.zip"
+      dest: "{{ansible_user_dir}}/consul-{{hashicorp_consul_version}}.zip"
+      mode: 0444
+  when: hashicorp_consul_install
+
+- name: Unzip Consul Upload
+  become: yes
+  unarchive:
+      src: "{{ansible_user_dir}}/consul-{{hashicorp_consul_version}}.zip"
+      dest: /usr/local/bin
+      copy: no
+      owner: "{{ansible_user_uid}}"
+      group: "{{ansible_user_gid}}"
+      mode: 0555
+      creates: /usr/local/bin/consul
+  when: hashicorp_consul_install
+
+- name: Test Consul
+  command: /usr/local/bin/consul --version
