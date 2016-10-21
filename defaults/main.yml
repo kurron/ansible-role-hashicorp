@@ -9,7 +9,7 @@ hashicorp_consul_replicate_install: true
 hashicorp_consul_replicate_version: 0.2.0
 
 hashicorp_consul_template_install: true
-hashicorp_consul_template_version: 1.0.0
+hashicorp_consul_template_version: 0.16.0
 
 hashicorp_docker_base_install: true
 hashicorp_docker_base_version: 1.0.0
