@@ -189,5 +189,31 @@
 
 - name: Test Packer
   command: /usr/local/bin/packer --version
-  when: hashicorp_packer_install
+# when: hashicorp_packer_install
+# https://github.com/mitchellh/packer/issues/3370
+  when: false
+
+- name: Download Serf
+  become: yes
+  get_url:
+      url: "https://releases.hashicorp.com/serf/{{hashicorp_serf_version}}/serf_{{hashicorp_serf_version}}_linux_amd64.zip"
+      dest: "{{ansible_user_dir}}/serf-{{hashicorp_serf_version}}.zip"
+      mode: 0444
+  when: hashicorp_serf_install
+
+- name: Unzip Serf
+  become: yes
+  unarchive:
+      src: "{{ansible_user_dir}}/serf-{{hashicorp_serf_version}}.zip"
+      dest: /usr/local/bin
+      copy: no
+      owner: "{{ansible_user_uid}}"
+      group: "{{ansible_user_gid}}"
+      mode: 0555
+      creates: /usr/local/bin/serf
+  when: hashicorp_serf_install
+
+- name: Test Serf
+  command: /usr/local/bin/serf --version
+  when: hashicorp_serf_install
 
