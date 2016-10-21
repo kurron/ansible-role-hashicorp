@@ -90,3 +90,26 @@
 
 - name: Test Consul Template
   command: /usr/local/bin/consul-template --version
+
+- name: Download Envconsul
+  become: yes
+  get_url:
+      url: "https://releases.hashicorp.com/envconsul/{{hashicorp_envconsul_version}}/envconsul_{{hashicorp_envconsul_version}}_linux_amd64.zip"
+      dest: "{{ansible_user_dir}}/envconsul-{{hashicorp_envconsul_version}}.zip"
+      mode: 0444
+  when: hashicorp_envconsul_install
+
+- name: Unzip Envconsul
+  become: yes
+  unarchive:
+      src: "{{ansible_user_dir}}/envconsul-{{hashicorp_envconsul_version}}.zip"
+      dest: /usr/local/bin
+      copy: no
+      owner: "{{ansible_user_uid}}"
+      group: "{{ansible_user_gid}}"
+      mode: 0555
+      creates: /usr/local/bin/envconsul
+  when: hashicorp_envconsul_install
+
+- name: Test Envconsul
+  command: /usr/local/bin/envconsul --version
