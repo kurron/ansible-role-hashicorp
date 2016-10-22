@@ -188,10 +188,10 @@
   when: hashicorp_packer_install
 
 - name: Test Packer
-  command: /usr/local/bin/packer --version
 # https://github.com/mitchellh/packer/issues/3370
-# when: hashicorp_packer_install
-  when: false
+# command: /usr/local/bin/packer --version
+  command: /usr/local/bin/packer version
+  when: hashicorp_packer_install
 
 - name: Download Serf
   become: yes
@@ -240,5 +240,32 @@
 - name: Test Terraform
   command: /usr/local/bin/terraform --version
   when: hashicorp_terraform_install
+
+# Vagrant
+
+- name: Download Vault
+  become: yes
+  get_url:
+      url: "https://releases.hashicorp.com/vault/{{hashicorp_vault_version}}/vault_{{hashicorp_vault_version}}_linux_amd64.zip"
+      dest: "{{ansible_user_dir}}/vault-{{hashicorp_vault_version}}.zip"
+      mode: 0444
+  when: hashicorp_vault_install
+
+- name: Unzip Vault
+  become: yes
+  unarchive:
+      src: "{{ansible_user_dir}}/vault-{{hashicorp_vault_version}}.zip"
+      dest: /usr/local/bin
+      copy: no
+      owner: "{{ansible_user_uid}}"
+      group: "{{ansible_user_gid}}"
+      mode: 0555
+      creates: /usr/local/bin/vault
+  when: hashicorp_vault_install
+
+- name: Test Vault
+  command: /usr/local/bin/vault --version
+  when: hashicorp_vault_install
+
 
 
