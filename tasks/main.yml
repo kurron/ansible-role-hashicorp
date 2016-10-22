@@ -241,7 +241,16 @@
   command: /usr/local/bin/terraform --version
   when: hashicorp_terraform_install
 
-# Vagrant
+- name: Install Vagrant
+  become: yes
+  dnf:
+      name: "https://releases.hashicorp.com/vagrant/{{hashicorp_vagrant_version}}/vagrant_{{hashicorp_vagrant_version}}_x86_64.rpm"
+      state: present
+  when: ansible_distribution == "Fedora" and hashicorp_vagrant_install
+
+- name: Test Vagrant
+  command: /usr/bin/vagrant --version
+  when: hashicorp_vagrant_install
 
 - name: Download Vault
   become: yes
