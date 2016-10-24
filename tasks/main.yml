@@ -300,6 +300,3 @@
   command: /usr/local/bin/vault-ssh-helper --version
   when: hashicorp_vault_ssh_helper_install
 
-
-
-
