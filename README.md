@@ -45,7 +45,7 @@ Role Variables
 Dependencies
 ------------
 
-No dependencies.
+* kurron.base
 
 Example Playbook
 ----------------
