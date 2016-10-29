@@ -1,6 +1,6 @@
 galaxy_info:
   author: Ronald D. Kurr
-  description: Long time slinger of code.
+  description: The "Hashistack", all the tools from HashiCorp. 
   company: jvmguy.com
 
   license: Apache 2
@@ -32,7 +32,11 @@ galaxy_info:
 
   galaxy_tags:
       - development
-      - virtualization
+      - consul
+      - vault
+      - packer
+      - vagrant
+      - terraform
 
 dependencies:
     - { role: kurron.base }
