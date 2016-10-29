@@ -106,7 +106,7 @@
 - name: Unzip Envconsul
   become: yes
   unarchive:
-      src: "{{ansible_user_dir}}/envconsul-{{hashicorp_envconsul_version}}.zip"
+      src: "{{ansible_user_dir}}/{{base_download_directory}}/envconsul-{{hashicorp_envconsul_version}}.zip"
       dest: /usr/local/bin
       copy: no
       owner: "{{ansible_user_uid}}"
@@ -130,7 +130,7 @@
 - name: Unzip Nomad
   become: yes
   unarchive:
-      src: "{{ansible_user_dir}}/nomad-{{hashicorp_nomad_version}}.zip"
+      src: "{{ansible_user_dir}}/{{base_download_directory}}/nomad-{{hashicorp_nomad_version}}.zip"
       dest: /usr/local/bin
       copy: no
       owner: "{{ansible_user_uid}}"
@@ -228,7 +228,7 @@
 - name: Unzip Terraform
   become: yes
   unarchive:
-      src: "{{ansible_user_dir}}/terraform-{{hashicorp_terraform_version}}.zip"
+      src: "{{ansible_user_dir}}/{{base_download_directory}}/terraform-{{hashicorp_terraform_version}}.zip"
       dest: /usr/local/bin
       copy: no
       owner: "{{ansible_user_uid}}"
@@ -263,7 +263,7 @@
 - name: Unzip Vault
   become: yes
   unarchive:
-      src: "{{ansible_user_dir}}/vault-{{hashicorp_vault_version}}.zip"
+      src: "{{ansible_user_dir}}/{{base_download_directory}}/vault-{{hashicorp_vault_version}}.zip"
       dest: /usr/local/bin
       copy: no
       owner: "{{ansible_user_uid}}"
