@@ -1,16 +1,16 @@
 ---
 - name: Download Atlas Upload
-  become: yes
+  become: no
   get_url:
       url: "https://releases.hashicorp.com/atlas-upload-cli/{{hashicorp_atlas_upload_version}}/atlas-upload-cli_{{hashicorp_atlas_upload_version}}_linux_amd64.zip"
-      dest: "{{ansible_user_dir}}/atlas-upload-cli-{{hashicorp_atlas_upload_version}}.zip"
+      dest: "{{ansible_user_dir}}/{{base_download_directory}}/atlas-upload-cli-{{hashicorp_atlas_upload_version}}.zip"
       mode: 0444
   when: hashicorp_atlas_upload_install
 
 - name: Unzip Atlas Upload
   become: yes
   unarchive:
-      src: "{{ansible_user_dir}}/atlas-upload-cli-{{hashicorp_atlas_upload_version}}.zip"
+      src: "{{ansible_user_dir}}/{{base_download_directory}}/atlas-upload-cli-{{hashicorp_atlas_upload_version}}.zip"
       dest: /usr/local/bin
       copy: no
       owner: "{{ansible_user_uid}}"
@@ -24,17 +24,17 @@
   when: hashicorp_atlas_upload_install
 
 - name: Download Consul
-  become: yes
+  become: no
   get_url:
       url: "https://releases.hashicorp.com/consul/{{hashicorp_consul_version}}/consul_{{hashicorp_consul_version}}_linux_amd64.zip"
-      dest: "{{ansible_user_dir}}/consul-{{hashicorp_consul_version}}.zip"
+      dest: "{{ansible_user_dir}}/{{base_download_directory}}/consul-{{hashicorp_consul_version}}.zip"
       mode: 0444
   when: hashicorp_consul_install
 
 - name: Unzip Consul
   become: yes
   unarchive:
-      src: "{{ansible_user_dir}}/consul-{{hashicorp_consul_version}}.zip"
+      src: "{{ansible_user_dir}}/{{base_download_directory}}/consul-{{hashicorp_consul_version}}.zip"
       dest: /usr/local/bin
       copy: no
       owner: "{{ansible_user_uid}}"
@@ -48,17 +48,17 @@
   when: hashicorp_consul_install
 
 - name: Download Consul Replicate
-  become: yes
+  become: no
   get_url:
       url: "https://releases.hashicorp.com/consul-replicate/{{hashicorp_consul_replicate_version}}/consul-replicate_{{hashicorp_consul_replicate_version}}_linux_amd64.zip"
-      dest: "{{ansible_user_dir}}/consul-replicate-{{hashicorp_consul_replicate_version}}.zip"
+      dest: "{{ansible_user_dir}}/{{base_download_directory}}/consul-replicate-{{hashicorp_consul_replicate_version}}.zip"
       mode: 0444
   when: hashicorp_consul_replicate_install
 
 - name: Unzip Consul Replicate
   become: yes
   unarchive:
-      src: "{{ansible_user_dir}}/consul-replicate-{{hashicorp_consul_replicate_version}}.zip"
+      src: "{{ansible_user_dir}}/{{base_download_directory}}/consul-replicate-{{hashicorp_consul_replicate_version}}.zip"
       dest: /usr/local/bin
       copy: no
       owner: "{{ansible_user_uid}}"
@@ -72,17 +72,17 @@
   when: hashicorp_consul_replicate_install
 
 - name: Download Consul Template
-  become: yes
+  become: no
   get_url:
       url: "https://releases.hashicorp.com/consul-template/{{hashicorp_consul_template_version}}/consul-template_{{hashicorp_consul_template_version}}_linux_amd64.zip"
-      dest: "{{ansible_user_dir}}/consul-template-{{hashicorp_consul_template_version}}.zip"
+      dest: "{{ansible_user_dir}}/{{base_download_directory}}/consul-template-{{hashicorp_consul_template_version}}.zip"
       mode: 0444
   when: hashicorp_consul_template_install
 
 - name: Unzip Consul Template
   become: yes
   unarchive:
-      src: "{{ansible_user_dir}}/consul-template-{{hashicorp_consul_template_version}}.zip"
+      src: "{{ansible_user_dir}}/{{base_download_directory}}/consul-template-{{hashicorp_consul_template_version}}.zip"
       dest: /usr/local/bin
       copy: no
       owner: "{{ansible_user_uid}}"
@@ -96,10 +96,10 @@
   when: hashicorp_consul_template_install
 
 - name: Download Envconsul
-  become: yes
+  become: no
   get_url:
       url: "https://releases.hashicorp.com/envconsul/{{hashicorp_envconsul_version}}/envconsul_{{hashicorp_envconsul_version}}_linux_amd64.zip"
-      dest: "{{ansible_user_dir}}/envconsul-{{hashicorp_envconsul_version}}.zip"
+      dest: "{{ansible_user_dir}}/{{base_download_directory}}/envconsul-{{hashicorp_envconsul_version}}.zip"
       mode: 0444
   when: hashicorp_envconsul_install
 
@@ -120,10 +120,10 @@
   when: hashicorp_envconsul_install
 
 - name: Download Nomad
-  become: yes
+  become: no
   get_url:
       url: "https://releases.hashicorp.com/nomad/{{hashicorp_nomad_version}}/nomad_{{hashicorp_nomad_version}}_linux_amd64.zip"
-      dest: "{{ansible_user_dir}}/nomad-{{hashicorp_nomad_version}}.zip"
+      dest: "{{ansible_user_dir}}/{{base_download_directory}}/nomad-{{hashicorp_nomad_version}}.zip"
       mode: 0444
   when: hashicorp_nomad_install
 
@@ -144,17 +144,17 @@
   when: hashicorp_nomad_install
 
 - name: Download Otto
-  become: yes
+  become: no
   get_url:
       url: "https://releases.hashicorp.com/otto/{{hashicorp_otto_version}}/otto_{{hashicorp_otto_version}}_linux_amd64.zip"
-      dest: "{{ansible_user_dir}}/otto-{{hashicorp_otto_version}}.zip"
+      dest: "{{ansible_user_dir}}/{{base_download_directory}}/otto-{{hashicorp_otto_version}}.zip"
       mode: 0444
   when: hashicorp_otto_install
 
 - name: Unzip Otto
   become: yes
   unarchive:
-      src: "{{ansible_user_dir}}/otto-{{hashicorp_otto_version}}.zip"
+      src: "{{ansible_user_dir}}/{{base_download_directory}}/otto-{{hashicorp_otto_version}}.zip"
       dest: /usr/local/bin
       copy: no
       owner: "{{ansible_user_uid}}"
@@ -168,17 +168,17 @@
   when: hashicorp_otto_install
 
 - name: Download Packer
-  become: yes
+  become: no
   get_url:
       url: "https://releases.hashicorp.com/packer/{{hashicorp_packer_version}}/packer_{{hashicorp_packer_version}}_linux_amd64.zip"
-      dest: "{{ansible_user_dir}}/packer-{{hashicorp_packer_version}}.zip"
+      dest: "{{ansible_user_dir}}/{{base_download_directory}}/packer-{{hashicorp_packer_version}}.zip"
       mode: 0444
   when: hashicorp_packer_install
 
 - name: Unzip Packer
   become: yes
   unarchive:
-      src: "{{ansible_user_dir}}/packer-{{hashicorp_packer_version}}.zip"
+      src: "{{ansible_user_dir}}/{{base_download_directory}}/packer-{{hashicorp_packer_version}}.zip"
       dest: /usr/local/bin
       copy: no
       owner: "{{ansible_user_uid}}"
@@ -194,17 +194,17 @@
   when: hashicorp_packer_install
 
 - name: Download Serf
-  become: yes
+  become: no
   get_url:
       url: "https://releases.hashicorp.com/serf/{{hashicorp_serf_version}}/serf_{{hashicorp_serf_version}}_linux_amd64.zip"
-      dest: "{{ansible_user_dir}}/serf-{{hashicorp_serf_version}}.zip"
+      dest: "{{ansible_user_dir}}/{{base_download_directory}}/serf-{{hashicorp_serf_version}}.zip"
       mode: 0444
   when: hashicorp_serf_install
 
 - name: Unzip Serf
   become: yes
   unarchive:
-      src: "{{ansible_user_dir}}/serf-{{hashicorp_serf_version}}.zip"
+      src: "{{ansible_user_dir}}/{{base_download_directory}}/serf-{{hashicorp_serf_version}}.zip"
       dest: /usr/local/bin
       copy: no
       owner: "{{ansible_user_uid}}"
@@ -218,10 +218,10 @@
   when: hashicorp_serf_install
 
 - name: Download Terraform
-  become: yes
+  become: no
   get_url:
       url: "https://releases.hashicorp.com/terraform/{{hashicorp_terraform_version}}/terraform_{{hashicorp_terraform_version}}_linux_amd64.zip"
-      dest: "{{ansible_user_dir}}/terraform-{{hashicorp_terraform_version}}.zip"
+      dest: "{{ansible_user_dir}}/{{base_download_directory}}/terraform-{{hashicorp_terraform_version}}.zip"
       mode: 0444
   when: hashicorp_terraform_install
 
@@ -253,10 +253,10 @@
   when: ansible_distribution == "Fedora" and hashicorp_vagrant_install
 
 - name: Download Vault
-  become: yes
+  become: no
   get_url:
       url: "https://releases.hashicorp.com/vault/{{hashicorp_vault_version}}/vault_{{hashicorp_vault_version}}_linux_amd64.zip"
-      dest: "{{ansible_user_dir}}/vault-{{hashicorp_vault_version}}.zip"
+      dest: "{{ansible_user_dir}}/{{base_download_directory}}/vault-{{hashicorp_vault_version}}.zip"
       mode: 0444
   when: hashicorp_vault_install
 
@@ -277,17 +277,17 @@
   when: hashicorp_vault_install
 
 - name: Download Vault SSH Helper
-  become: yes
+  become: no
   get_url:
       url: "https://releases.hashicorp.com/vault-ssh-helper/{{hashicorp_vault_ssh_helper_version}}/vault-ssh-helper_{{hashicorp_vault_ssh_helper_version}}_linux_amd64.zip"
-      dest: "{{ansible_user_dir}}/vault-ssh-helper-{{hashicorp_vault_ssh_helper_version}}.zip"
+      dest: "{{ansible_user_dir}}/{{base_download_directory}}/vault-ssh-helper-{{hashicorp_vault_ssh_helper_version}}.zip"
       mode: 0444
   when: hashicorp_vault_ssh_helper_install
 
 - name: Unzip Vault SSH Helper
   become: yes
   unarchive:
-      src: "{{ansible_user_dir}}/vault-ssh-helper-{{hashicorp_vault_ssh_helper_version}}.zip"
+      src: "{{ansible_user_dir}}/{{base_download_directory}}/vault-ssh-helper-{{hashicorp_vault_ssh_helper_version}}.zip"
       dest: /usr/local/bin
       copy: no
       owner: "{{ansible_user_uid}}"
