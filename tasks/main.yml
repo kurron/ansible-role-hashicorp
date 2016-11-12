@@ -252,6 +252,17 @@
   command: /usr/bin/vagrant --version
   when: ansible_distribution == "Fedora" and hashicorp_vagrant_install
 
+- name: Install Vagrant
+  become: yes
+  apt:
+      deb: "https://releases.hashicorp.com/vagrant/{{hashicorp_vagrant_version}}/vagrant_{{hashicorp_vagrant_version}}_x86_64.deb"
+      state: present
+  when: ansible_distribution == "Ubuntu" and hashicorp_vagrant_install
+
+- name: Test Vagrant
+  command: /usr/bin/vagrant --version
+  when: ansible_distribution == "Fedora" and hashicorp_vagrant_install
+
 - name: Download Vault
   become: no
   get_url:
@@ -299,4 +310,3 @@
 - name: Test Vault SSH Helper
   command: /usr/local/bin/vault-ssh-helper --version
   when: hashicorp_vault_ssh_helper_install
-
