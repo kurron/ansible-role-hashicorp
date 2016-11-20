@@ -188,9 +188,7 @@
   when: hashicorp_packer_install
 
 - name: Test Packer
-# https://github.com/mitchellh/packer/issues/3370
-# command: /usr/local/bin/packer --version
-  command: /usr/local/bin/packer version
+  command: /usr/local/bin/packer --version
   when: hashicorp_packer_install
 
 - name: Download Serf
