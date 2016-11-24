@@ -188,7 +188,8 @@
   when: hashicorp_packer_install
 
 - name: Test Packer
-  command: /usr/local/bin/packer --version
+# command: /usr/local/bin/packer --version
+  command: /usr/local/bin/packer version
   when: hashicorp_packer_install
 
 - name: Download Serf
