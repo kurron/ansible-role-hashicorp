@@ -36,7 +36,7 @@ hashicorp_terraform_install: true
 hashicorp_terraform_version: 0.7.13
 
 hashicorp_vagrant_install: true
-hashicorp_vagrant_version: 1.8.7
+hashicorp_vagrant_version: 1.9.1
 
 hashicorp_vault_install: true
 hashicorp_vault_version: 0.6.2
