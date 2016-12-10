@@ -6,6 +6,8 @@
       dest: "{{ansible_user_dir}}/{{base_download_directory}}/atlas-upload-cli-{{hashicorp_atlas_upload_version}}.zip"
       mode: 0444
   when: hashicorp_atlas_upload_install
+  tags:
+      - hashicorp
 
 - name: Unzip Atlas Upload
   become: yes
@@ -18,10 +20,14 @@
       mode: 0555
       creates: /usr/local/bin/atlas-upload
   when: hashicorp_atlas_upload_install
+  tags:
+      - hashicorp
 
 - name: Test Atlas Upload
   command: /usr/local/bin/atlas-upload --version
   when: hashicorp_atlas_upload_install
+  tags:
+      - hashicorp
 
 - name: Download Consul
   become: no
@@ -30,6 +36,8 @@
       dest: "{{ansible_user_dir}}/{{base_download_directory}}/consul-{{hashicorp_consul_version}}.zip"
       mode: 0444
   when: hashicorp_consul_install
+  tags:
+      - hashicorp
 
 - name: Unzip Consul
   become: yes
@@ -42,10 +50,14 @@
       mode: 0555
       creates: /usr/local/bin/consul
   when: hashicorp_consul_install
+  tags:
+      - hashicorp
 
 - name: Test Consul
   command: /usr/local/bin/consul --version
   when: hashicorp_consul_install
+  tags:
+      - hashicorp
 
 - name: Download Consul Replicate
   become: no
@@ -54,6 +66,8 @@
       dest: "{{ansible_user_dir}}/{{base_download_directory}}/consul-replicate-{{hashicorp_consul_replicate_version}}.zip"
       mode: 0444
   when: hashicorp_consul_replicate_install
+  tags:
+      - hashicorp
 
 - name: Unzip Consul Replicate
   become: yes
@@ -66,10 +80,14 @@
       mode: 0555
       creates: /usr/local/bin/consul-replicate
   when: hashicorp_consul_replicate_install
+  tags:
+      - hashicorp
 
 - name: Test Consul Replicate
   command: /usr/local/bin/consul-replicate --version
   when: hashicorp_consul_replicate_install
+  tags:
+      - hashicorp
 
 - name: Download Consul Template
   become: no
@@ -78,6 +96,8 @@
       dest: "{{ansible_user_dir}}/{{base_download_directory}}/consul-template-{{hashicorp_consul_template_version}}.zip"
       mode: 0444
   when: hashicorp_consul_template_install
+  tags:
+      - hashicorp
 
 - name: Unzip Consul Template
   become: yes
@@ -90,10 +110,14 @@
       mode: 0555
       creates: /usr/local/bin/consul-template
   when: hashicorp_consul_template_install
+  tags:
+      - hashicorp
 
 - name: Test Consul Template
   command: /usr/local/bin/consul-template --version
   when: hashicorp_consul_template_install
+  tags:
+      - hashicorp
 
 - name: Download Envconsul
   become: no
@@ -102,6 +126,8 @@
       dest: "{{ansible_user_dir}}/{{base_download_directory}}/envconsul-{{hashicorp_envconsul_version}}.zip"
       mode: 0444
   when: hashicorp_envconsul_install
+  tags:
+      - hashicorp
 
 - name: Unzip Envconsul
   become: yes
@@ -114,10 +140,14 @@
       mode: 0555
       creates: /usr/local/bin/envconsul
   when: hashicorp_envconsul_install
+  tags:
+      - hashicorp
 
 - name: Test Envconsul
   command: /usr/local/bin/envconsul --version
   when: hashicorp_envconsul_install
+  tags:
+      - hashicorp
 
 - name: Download Nomad
   become: no
@@ -126,6 +156,8 @@
       dest: "{{ansible_user_dir}}/{{base_download_directory}}/nomad-{{hashicorp_nomad_version}}.zip"
       mode: 0444
   when: hashicorp_nomad_install
+  tags:
+      - hashicorp
 
 - name: Unzip Nomad
   become: yes
@@ -138,10 +170,14 @@
       mode: 0555
       creates: /usr/local/bin/nomad
   when: hashicorp_nomad_install
+  tags:
+      - hashicorp
 
 - name: Test Nomad
   command: /usr/local/bin/nomad --version
   when: hashicorp_nomad_install
+  tags:
+      - hashicorp
 
 - name: Download Otto
   become: no
@@ -150,6 +186,8 @@
       dest: "{{ansible_user_dir}}/{{base_download_directory}}/otto-{{hashicorp_otto_version}}.zip"
       mode: 0444
   when: hashicorp_otto_install
+  tags:
+      - hashicorp
 
 - name: Unzip Otto
   become: yes
@@ -162,10 +200,14 @@
       mode: 0555
       creates: /usr/local/bin/otto
   when: hashicorp_otto_install
+  tags:
+      - hashicorp
 
 - name: Test Otto
   command: /usr/local/bin/otto --version
   when: hashicorp_otto_install
+  tags:
+      - hashicorp
 
 - name: Download Packer
   become: no
@@ -174,6 +216,8 @@
       dest: "{{ansible_user_dir}}/{{base_download_directory}}/packer-{{hashicorp_packer_version}}.zip"
       mode: 0444
   when: hashicorp_packer_install
+  tags:
+      - hashicorp
 
 - name: Unzip Packer
   become: yes
@@ -186,11 +230,15 @@
       mode: 0555
       creates: /usr/local/bin/packer
   when: hashicorp_packer_install
+  tags:
+      - hashicorp
 
 - name: Test Packer
 # command: /usr/local/bin/packer --version
   command: /usr/local/bin/packer version
   when: hashicorp_packer_install
+  tags:
+      - hashicorp
 
 - name: Download Serf
   become: no
@@ -199,6 +247,8 @@
       dest: "{{ansible_user_dir}}/{{base_download_directory}}/serf-{{hashicorp_serf_version}}.zip"
       mode: 0444
   when: hashicorp_serf_install
+  tags:
+      - hashicorp
 
 - name: Unzip Serf
   become: yes
@@ -211,10 +261,14 @@
       mode: 0555
       creates: /usr/local/bin/serf
   when: hashicorp_serf_install
+  tags:
+      - hashicorp
 
 - name: Test Serf
   command: /usr/local/bin/serf --version
   when: hashicorp_serf_install
+  tags:
+      - hashicorp
 
 - name: Download Terraform
   become: no
@@ -223,6 +277,8 @@
       dest: "{{ansible_user_dir}}/{{base_download_directory}}/terraform-{{hashicorp_terraform_version}}.zip"
       mode: 0444
   when: hashicorp_terraform_install
+  tags:
+      - hashicorp
 
 - name: Unzip Terraform
   become: yes
@@ -235,10 +291,14 @@
       mode: 0555
       creates: /usr/local/bin/terraform
   when: hashicorp_terraform_install
+  tags:
+      - hashicorp
 
 - name: Test Terraform
   command: /usr/local/bin/terraform --version
   when: hashicorp_terraform_install
+  tags:
+      - hashicorp
 
 - name: Install Vagrant
   become: yes
@@ -246,10 +306,14 @@
       name: "https://releases.hashicorp.com/vagrant/{{hashicorp_vagrant_version}}/vagrant_{{hashicorp_vagrant_version}}_x86_64.rpm"
       state: present
   when: ansible_distribution == "Fedora" and hashicorp_vagrant_install
+  tags:
+      - hashicorp
 
 - name: Test Vagrant
   command: /usr/bin/vagrant --version
   when: ansible_distribution == "Fedora" and hashicorp_vagrant_install
+  tags:
+      - hashicorp
 
 - name: Install Vagrant
   become: yes
@@ -257,10 +321,14 @@
       deb: "https://releases.hashicorp.com/vagrant/{{hashicorp_vagrant_version}}/vagrant_{{hashicorp_vagrant_version}}_x86_64.deb"
       state: present
   when: ansible_distribution == "Ubuntu" and hashicorp_vagrant_install
+  tags:
+      - hashicorp
 
 - name: Test Vagrant
   command: /usr/bin/vagrant --version
   when: ansible_distribution == "Fedora" and hashicorp_vagrant_install
+  tags:
+      - hashicorp
 
 - name: Download Vault
   become: no
@@ -269,6 +337,8 @@
       dest: "{{ansible_user_dir}}/{{base_download_directory}}/vault-{{hashicorp_vault_version}}.zip"
       mode: 0444
   when: hashicorp_vault_install
+  tags:
+      - hashicorp
 
 - name: Unzip Vault
   become: yes
@@ -281,10 +351,14 @@
       mode: 0555
       creates: /usr/local/bin/vault
   when: hashicorp_vault_install
+  tags:
+      - hashicorp
 
 - name: Test Vault
   command: /usr/local/bin/vault --version
   when: hashicorp_vault_install
+  tags:
+      - hashicorp
 
 - name: Download Vault SSH Helper
   become: no
@@ -293,6 +367,8 @@
       dest: "{{ansible_user_dir}}/{{base_download_directory}}/vault-ssh-helper-{{hashicorp_vault_ssh_helper_version}}.zip"
       mode: 0444
   when: hashicorp_vault_ssh_helper_install
+  tags:
+      - hashicorp
 
 - name: Unzip Vault SSH Helper
   become: yes
@@ -305,7 +381,11 @@
       mode: 0555
       creates: /usr/local/bin/vault-ssh-helper
   when: hashicorp_vault_ssh_helper_install
+  tags:
+      - hashicorp
 
 - name: Test Vault SSH Helper
   command: /usr/local/bin/vault-ssh-helper --version
   when: hashicorp_vault_ssh_helper_install
+  tags:
+      - hashicorp
