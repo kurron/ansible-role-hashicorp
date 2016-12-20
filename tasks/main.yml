@@ -389,3 +389,44 @@
   when: hashicorp_vault_ssh_helper_install
   tags:
       - hashicorp
+
+- name: Create Consul Group
+  become: yes
+  group:
+      name: consul
+      state: present
+  when: hashicorp_consul_install and hashicorp_consul_enable_daemon
+  tags:
+      - hashicorp
+      - consul-daemon
+
+- name: Create Consul User
+  become: yes
+  user:
+      name: consul
+      group: consul
+      comment: "Consul Daemon"
+      createhome: no
+      state: present
+  when: hashicorp_consul_install and hashicorp_consul_enable_daemon
+  tags:
+      - hashicorp
+      - consul-daemon
+
+- name: Create Consul Directories
+  become: yes
+  file:
+      path: "{{ item }}"
+      group: consul
+      owner: consul
+      state: directory
+      mode: 0755
+  with_items:
+      - /etc/consul.d/bootstrap
+      - /etc/consul.d/server
+      - /etc/consul.d/client
+      - /var/consul
+  when: hashicorp_consul_install and hashicorp_consul_enable_daemon
+  tags:
+      - hashicorp
+      - consul-daemon
