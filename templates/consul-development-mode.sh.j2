@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# This mode is developement, meaning nothing is persisted to disk
+consul agent -config-dir /etc/consul.d -dev -pid-file /var/run/consul.pid 

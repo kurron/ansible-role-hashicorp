@@ -1,9 +1,9 @@
 {
-    "bind_addr": "0.0.0.0",
+    "bind_addr": "{{ hashicorp_consul_daemon_interface }}",
     "bootstrap_expect": 1,
-    "client_addr": "192.168.1.229",
+    "client_addr": "{{ hashicorp_consul_daemon_interface }}",
     "data_dir": "/var/consul",
-    "datacenter": "basement",
+    "datacenter": "development",
     "server" : true,
     "ui" : true
 }

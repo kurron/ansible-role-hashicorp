@@ -1,0 +1,8 @@
+{
+    "bind_addr": "{{ ansible_host }}",
+    "client_addr": "{{ ansible_host }}",
+    "data_dir": "/var/consul",
+    "datacenter": "{{ hashicorp_consul_daemon_datacenter }}",
+    "server" : true,
+    "ui" : true
+}

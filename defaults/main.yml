@@ -3,8 +3,9 @@ hashicorp_atlas_upload_install: true
 hashicorp_atlas_upload_version: 0.2.0
 
 hashicorp_consul_install: true
-hashicorp_consul_version: 0.7.1
-hashicorp_consul_enable_daemon: true
+hashicorp_consul_version: 0.7.2
+hashicorp_consul_daemon_enable: true
+hashicorp_consul_daemon_datacenter: "New_England"
 
 hashicorp_consul_replicate_install: true
 hashicorp_consul_replicate_version: 0.2.0

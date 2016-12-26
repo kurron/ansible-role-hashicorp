@@ -395,7 +395,7 @@
   group:
       name: consul
       state: present
-  when: hashicorp_consul_install and hashicorp_consul_enable_daemon
+  when: hashicorp_consul_install and hashicorp_consul_daemon_enable
   tags:
       - hashicorp
       - consul-daemon
@@ -408,7 +408,7 @@
       comment: "Consul Daemon"
       createhome: no
       state: present
-  when: hashicorp_consul_install and hashicorp_consul_enable_daemon
+  when: hashicorp_consul_install and hashicorp_consul_daemon_enable
   tags:
       - hashicorp
       - consul-daemon
@@ -422,11 +422,35 @@
       state: directory
       mode: 0755
   with_items:
-      - /etc/consul.d/bootstrap
-      - /etc/consul.d/server
-      - /etc/consul.d/client
+      - /etc/consul.d
       - /var/consul
-  when: hashicorp_consul_install and hashicorp_consul_enable_daemon
+  when: hashicorp_consul_install and hashicorp_consul_daemon_enable
+  tags:
+      - hashicorp
+      - consul-daemon
+
+- name: Install Development Configuration
+  become: yes
+  template:
+      src: templates/development-config.json.j2
+      dest: /etc/consul.d/development.json
+      owner: consul
+      group: consul
+      mode: 0644
+  when: hashicorp_consul_install and hashicorp_consul_daemon_enable
+  tags:
+      - hashicorp
+      - consul-daemon
+
+- name: Install Development Unit File
+  become: yes
+  template:
+      src: templates/consul.service.j2
+      dest: /etc/systemd/system/consul.service
+      owner: root
+      group: root
+      mode: 0555
+  when: hashicorp_consul_install and hashicorp_consul_daemon_enable
   tags:
       - hashicorp
       - consul-daemon
