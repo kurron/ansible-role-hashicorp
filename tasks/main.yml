@@ -395,7 +395,7 @@
   group:
       name: consul
       state: present
-  when: hashicorp_consul_install and hashicorp_consul_daemon_enable
+  when: hashicorp_consul_install and hashicorp_consul_daemon_install
   tags:
       - hashicorp
       - consul-daemon
@@ -408,7 +408,7 @@
       comment: "Consul Daemon"
       createhome: no
       state: present
-  when: hashicorp_consul_install and hashicorp_consul_daemon_enable
+  when: hashicorp_consul_install and hashicorp_consul_daemon_install
   tags:
       - hashicorp
       - consul-daemon
@@ -424,7 +424,7 @@
   with_items:
       - /etc/consul.d
       - /var/consul
-  when: hashicorp_consul_install and hashicorp_consul_daemon_enable
+  when: hashicorp_consul_install and hashicorp_consul_daemon_install
   tags:
       - hashicorp
       - consul-daemon
@@ -437,7 +437,7 @@
       owner: consul
       group: consul
       mode: 0644
-  when: hashicorp_consul_install and hashicorp_consul_daemon_enable
+  when: hashicorp_consul_install and hashicorp_consul_daemon_install
   tags:
       - hashicorp
       - consul-daemon
@@ -450,7 +450,7 @@
       owner: root
       group: root
       mode: 0555
-  when: hashicorp_consul_install and hashicorp_consul_daemon_enable
+  when: hashicorp_consul_install and hashicorp_consul_daemon_install
   tags:
       - hashicorp
       - consul-daemon
@@ -461,7 +461,7 @@
       daemon_reload: yes
       state: restarted
       name: consul.service
-  when: hashicorp_consul_install and hashicorp_consul_daemon_enable
+  when: hashicorp_consul_install and hashicorp_consul_daemon_install
   tags:
       - hashicorp
       - consul-daemon
