@@ -8,7 +8,7 @@ hashicorp_consul_daemon_install: false
 hashicorp_consul_daemon_datacenter: "New_England"
 
 hashicorp_consul_replicate_install: true
-hashicorp_consul_replicate_version: 0.3.0
+hashicorp_consul_replicate_version: 0.3.1
 
 hashicorp_consul_template_install: true
 hashicorp_consul_template_version: 0.18.0
