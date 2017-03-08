@@ -23,7 +23,7 @@ hashicorp_envconsul_install: true
 hashicorp_envconsul_version: 0.6.2
 
 hashicorp_nomad_install: true
-hashicorp_nomad_version: 0.5.2
+hashicorp_nomad_version: 0.5.4
 
 hashicorp_otto_install: false
 hashicorp_otto_version: 0.2.0
