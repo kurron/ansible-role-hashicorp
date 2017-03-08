@@ -44,4 +44,4 @@ hashicorp_vault_install: true
 hashicorp_vault_version: 0.6.5
 
 hashicorp_vault_ssh_helper_install: true
-hashicorp_vault_ssh_helper_version: 0.1.2
+hashicorp_vault_ssh_helper_version: 0.1.3
