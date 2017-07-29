@@ -41,7 +41,7 @@ hashicorp_vagrant_install: true
 hashicorp_vagrant_version: 1.9.7
 
 hashicorp_vault_install: true
-hashicorp_vault_version: 0.7.0
+hashicorp_vault_version: 0.7.3
 
 hashicorp_vault_ssh_helper_install: true
 hashicorp_vault_ssh_helper_version: 0.1.3
