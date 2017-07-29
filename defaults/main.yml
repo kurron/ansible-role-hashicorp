@@ -29,7 +29,7 @@ hashicorp_otto_install: false
 hashicorp_otto_version: 0.2.0
 
 hashicorp_packer_install: true
-hashicorp_packer_version: 1.0.0
+hashicorp_packer_version: 1.0.3
 
 hashicorp_serf_install: true
 hashicorp_serf_version: 0.8.1
