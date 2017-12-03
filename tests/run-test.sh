@@ -1,3 +1,31 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-ansible-playbook --tags consul-daemon --verbose --inventory-file inventory --user vagrant --ask-pass --become-user root --ask-become-pass --tags consul-daemon test.yml
+#ansible-playbook --verbose --inventory-file inventory --user vagrant --ask-pass --become-user root --ask-become-pass test.yml
+
+rm -rf /tmp/roles
+mkdir /tmp/roles
+cp -R ~/GitHub/ansible-role-base /tmp/roles/kurron.base
+cp -R ~/GitHub/ansible-role-hashicorp /tmp/roles/kurron.hashicorp
+
+packer validate packer.json
+packer build --force packer.json
+
+
+# Need to give the container access to your windowing system
+export DISPLAY=:0
+xhost +
+
+CMD="docker run --env DISPLAY=unix${DISPLAY} \
+                --env HOME=${HOME_DIR} \
+                --env PHPSTORM_JDK=/usr/lib/jvm/azul-jdk-8 \
+                --env JDK_HOME=/usr/lib/jvm/azul-jdk-8 \
+                --env JAVA_HOME=/usr/lib/jvm/azul-jdk-8 \
+                --net host \
+                --interactive \
+                --tty \
+                --rm \
+                --volume /tmp/.X11-unix:/tmp/.X11-unix \
+                --workdir /root/Software \
+                kurron/ansible-role-hashicorp:latest bash"
+echo $CMD
+$CMD

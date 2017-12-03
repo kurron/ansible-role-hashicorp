@@ -1,0 +1,36 @@
+{
+    "description": "Tesing the Ansible Role",
+    "min_packer_version": "1.1.2",
+
+    "variables": {},
+
+    "builders": [
+        {
+            "type": "docker",
+            "image": "ubuntu:16.04",
+            "commit": true,
+            "changes": []
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": ["apt-get update && apt-get install --yes python python-pip libxrender1 libxtst6 libxi6 ttf-dejavu libgtk2.0-0 libcanberra-gtk-module libxext-dev libxrender-dev && pip install --upgrade ansible"]
+        },
+        {
+            "type": "ansible-local",
+            "playbook_file": "test.yml",
+            "extra_arguments": ["--verbose"],
+            "role_paths": ["/tmp/roles/kurron.base", "/tmp/roles/kurron.hashicorp"]
+        }
+    ],
+    "post-processors": [
+        [
+            {
+                "type": "docker-tag",
+                "repository": "kurron/ansible-role-hashicorp",
+                "tag": "latest"
+            }
+        ]
+    ]
+}
