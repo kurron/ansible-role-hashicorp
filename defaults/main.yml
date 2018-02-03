@@ -20,7 +20,7 @@ hashicorp_docker_basetool_install: false
 hashicorp_docker_basetool_version: 0.0.0
 
 hashicorp_envconsul_install: true
-hashicorp_envconsul_version: 0.7.2
+hashicorp_envconsul_version: 0.7.3
 
 hashicorp_nomad_install: true
 hashicorp_nomad_version: 0.7.1
