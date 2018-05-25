@@ -1,13 +1,13 @@
 {
     "description": "Tesing the Ansible Role",
-    "min_packer_version": "1.1.2",
+    "min_packer_version": "1.1.3",
 
     "variables": {},
 
     "builders": [
         {
             "type": "docker",
-            "image": "ubuntu:16.04",
+            "image": "ubuntu:18.04",
             "commit": true,
             "changes": []
         }
