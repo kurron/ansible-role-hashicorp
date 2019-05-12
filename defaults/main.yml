@@ -39,7 +39,7 @@ hashicorp_serf_version: 0.8.1
 
 # https://releases.hashicorp.com/terraform/
 hashicorp_terraform_install: true
-hashicorp_terraform_version: 0.11.11
+hashicorp_terraform_version: 0.11.13
 
 hashicorp_vagrant_install: false
 hashicorp_vagrant_version: 2.0.2
