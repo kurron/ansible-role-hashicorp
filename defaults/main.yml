@@ -32,7 +32,7 @@ hashicorp_otto_version: 0.2.0
 
 # https://releases.hashicorp.com/packer/
 hashicorp_packer_install: true
-hashicorp_packer_version: 1.4.0
+hashicorp_packer_version: 1.4.3
 
 hashicorp_serf_install: false
 hashicorp_serf_version: 0.8.1
