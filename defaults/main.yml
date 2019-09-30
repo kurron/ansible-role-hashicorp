@@ -46,7 +46,7 @@ hashicorp_vagrant_version: 2.0.2
 
 # https://releases.hashicorp.com/vault/
 hashicorp_vault_install: true
-hashicorp_vault_version: 1.1.2
+hashicorp_vault_version: 1.2.3
 
 # https://releases.hashicorp.com/vault-ssh-helper/
 hashicorp_vault_ssh_helper_install: true
