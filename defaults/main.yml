@@ -25,14 +25,14 @@ hashicorp_envconsul_version: 0.7.3
 
 # https://releases.hashicorp.com/nomad/
 hashicorp_nomad_install: true
-hashicorp_nomad_version: 0.10.3
+hashicorp_nomad_version: 0.10.4
 
 hashicorp_otto_install: false
 hashicorp_otto_version: 0.2.0
 
 # https://releases.hashicorp.com/packer/
 hashicorp_packer_install: true
-hashicorp_packer_version: 1.5.1
+hashicorp_packer_version: 1.5.4
 
 hashicorp_serf_install: false
 hashicorp_serf_version: 0.8.1
